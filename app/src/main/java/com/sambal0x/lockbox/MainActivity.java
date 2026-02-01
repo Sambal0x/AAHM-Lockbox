@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.security.MessageDigest;
 
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 onLoginClicked(view);
             }
         });
+
+        // Force-load DebugUtils so Frida can see it in our lab
+        try { Class.forName("com.sambal0x.lockbox.DebugUtils"); } catch (Exception ignored) {}
     }
 
     public void onLoginClicked(View view) {
@@ -51,10 +55,18 @@ public class MainActivity extends AppCompatActivity {
         return sb.toString();
     }
 
+    // Original string-based checkPin
     private boolean checkPin(String pin) {
         String hashed = calculateHash(pin);
         // Expected MD5("1337")
         return hashed.equals("e48e13207341b6bffb7fb1622282247b");
+    }
+
+    // NEW: overloaded version that accepts an int
+    // This creates an ambiguous method name for Frida if you try to hook checkPin
+    private boolean checkPin(int pin) {
+        // Convert to string and delegate to the main implementation
+        return checkPin(Integer.toString(pin));
     }
 
     private String calculateHash(String input) {
@@ -74,5 +86,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendToServer(String data, String hash) {
         Log.d(TAG, "Uploading data='" + data + "' with hash=" + hash);
+    }
+
+    // Hidden developer backdoor method
+    private void enableDeveloperMode() {
+        Log.d(TAG, "Developer mode ENABLED");
+        // Maybe change some runtime state
+        runOnUiThread(() -> {
+            statusText.setText("Developer Mode Activated!");
+        });
+    }
+
+    // Another example — fake internal bypass
+    private void disableRootDetection() {
+        Log.d(TAG, "Root detection DISABLED");
+        runOnUiThread(() -> {
+            statusText.setText("Root Detection Disabled!");
+        });
     }
 }
