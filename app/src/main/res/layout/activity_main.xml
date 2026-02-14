@@ -6,21 +6,24 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lockbox Demo"
         android:textSize="22sp"
-        android:layout_marginBottom="18dp"/>
+        android:layout_marginBottom="18dp" />
 
+    <!-- Instructions -->
     <TextView
         android:id="@+id/instructionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter PIN to unlock"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp" />
 
+    <!-- PIN input -->
     <EditText
         android:id="@+id/pinInput"
         android:layout_width="200dp"
@@ -28,20 +31,38 @@
         android:inputType="number"
         android:hint="PIN"
         android:maxLength="8"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp" />
 
+    <!-- Unlock button -->
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Unlock"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp" />
 
+    <!-- Access status -->
     <TextView
         android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Status: ---"
         android:textSize="16sp"
-        android:layout_marginTop="18dp"/>
+        android:layout_marginTop="18dp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="#CCCCCC" />
+
+    <!-- New section for native demo -->
+    <Button
+        android:id="@+id/btnLaunchOsCheck"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Launch OS Check" />
+
 </LinearLayout>

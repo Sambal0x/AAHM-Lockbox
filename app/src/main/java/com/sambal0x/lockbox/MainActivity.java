@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
+import android.content.Intent;
 import android.widget.Toast;
 
 import java.security.MessageDigest;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText pinInput;
     private TextView statusText;
     private Button loginBtn;
+    private Button launchOsCheckBtn; //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
         pinInput = findViewById(R.id.pinInput);
         statusText = findViewById(R.id.statusText);
         loginBtn = findViewById(R.id.loginBtn);
+        launchOsCheckBtn = findViewById(R.id.btnLaunchOsCheck);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onLoginClicked(view);
-            }
+        loginBtn.setOnClickListener(view -> onLoginClicked(view));
+
+        // Launch OS Check activity
+        launchOsCheckBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, OSCheckActivity.class));
         });
 
         // Force-load DebugUtils so Frida can see it in our lab

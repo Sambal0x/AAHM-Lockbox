@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- Title at the top -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OS Check"
+        android:textSize="22sp"
+        android:layout_marginBottom="18dp"/>
+
+    <!-- Button below the title -->
+    <Button
+        android:id="@+id/checkOsBtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Check OS"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Status text centered horizontally -->
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: ---"
+        android:textSize="16sp"
+        android:layout_marginTop="18dp"
+        android:gravity="center"/>
+
+    <!-- API level text centered horizontally -->
+    <TextView
+        android:id="@+id/apiLevelText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detected API level: ---"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"/>
+
+</LinearLayout>
